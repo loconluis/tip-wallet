@@ -5,8 +5,10 @@ import {
   View,
   Text,
   Pressable,
-  Touchable,
+  TouchableHighlight,
 } from "react-native";
+import { Colors } from "@/constants/Colors";
+import { useColorScheme } from "@/hooks/useColorScheme";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 // import { HelloWave } from "@/components/HelloWave";
@@ -15,6 +17,7 @@ import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 
 export default function HomeScreen() {
+  const colorScheme = useColorScheme();
   return (
     <ParallaxScrollView>
       <ThemedView style={styles.titleContainer}>
@@ -25,28 +28,39 @@ export default function HomeScreen() {
         </View>
       </ThemedView>
       <ThemedView style={styles.actionsContainer}>
-        <Pressable
+        <TouchableHighlight
           style={styles.actionButton}
           onPress={() => console.log("Send")}
+          underlayColor={"#464646"}
         >
-          <Text style={styles.actionText}>
-            <Ionicons size={15} name="arrow-up-outline" />
-            Enviar
-          </Text>
-        </Pressable>
-        <Pressable
+          <View>
+            <Text style={styles.actionText}>
+              <Ionicons size={15} name="arrow-up-outline" />
+              Enviar
+            </Text>
+          </View>
+        </TouchableHighlight>
+        <TouchableHighlight
           style={styles.actionButton}
-          onPress={() => console.log("Recieve")}
+          onPress={() => console.log("Receive")}
+          underlayColor={"#464646"}
         >
-          <Text style={styles.actionText}>
-            <Ionicons size={15} name="arrow-down-outline" />
-            Recibir
-          </Text>
-        </Pressable>
+          <View>
+            <Text style={styles.actionText}>
+              <Ionicons size={15} name="arrow-down-outline" />
+              Recibir
+            </Text>
+          </View>
+        </TouchableHighlight>
+      </ThemedView>
+      <ThemedView
+        style={{ height: 100, backgroundColor: "blue", borderRadius: 10 }}
+      >
+        {/* <Text>Banner</Text> */}
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
+        <ThemedText type="subtitle">Transacciones</ThemedText>
+        {/* <ThemedText>
           Edit{" "}
           <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText>{" "}
           to see changes. Press{" "}
@@ -72,7 +86,7 @@ export default function HomeScreen() {
           directory. This will move the current{" "}
           <ThemedText type="defaultSemiBold">app</ThemedText> to{" "}
           <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
+        </ThemedText> */}
       </ThemedView>
     </ParallaxScrollView>
   );
